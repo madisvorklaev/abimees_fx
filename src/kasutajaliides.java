@@ -9,17 +9,19 @@ import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import java.util.ArrayList;
 
 public class kasutajaliides extends Application{
     public static void main(String[] args) {
         launch(args);
     }
 
-    andmebaas readObject = new andmebaas();
-        readObject.createDatabase();
-        readObject.openFile();
-        readObject.readFile();
-        readObject.closeFile();
+        andmebaas Andmebaas = new andmebaas();
+        Andmebaas.createDatabase();
+        Andmebaas.openFile();
+        Andmebaas.readFile();
+        Andmebaas.closeFile();
+        ArrayList NimiAndmebaasist = Andmebaas.nimiAndmebaasist
 
     // Nupud - tekstiväljad
     final Button button = new Button("Lisa");
@@ -44,9 +46,10 @@ public class kasutajaliides extends Application{
                         "tootjaAndmebaasist2"
                 );
         final ComboBox seadmeComboBox = new ComboBox();
-                seadmeComboBox.getItems().addAll(
-                         "nimiAndmebaasist1",
-                         "nimiAndmebaasist2"
+                seadmeComboBox.setItems(NimiAndmebaasist);
+                //seadmeComboBox.getItems().addAll(
+                         //"nimiAndmebaasist1",
+                         //"nimiAndmebaasist2"
         );
 
         // Tabeli pealkiri
