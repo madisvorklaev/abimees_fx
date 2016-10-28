@@ -15,13 +15,14 @@ public class kasutajaliides extends Application{
     public static void main(String[] args) {
         launch(args);
     }
-
+    /*
         andmebaas Andmebaas = new andmebaas();
         Andmebaas.createDatabase();
         Andmebaas.openFile();
         Andmebaas.readFile();
         Andmebaas.closeFile();
         ArrayList NimiAndmebaasist = Andmebaas.nimiAndmebaasist
+        */
 
     // Nupud - tekstiväljad
     final Button button = new Button("Lisa");
@@ -46,10 +47,10 @@ public class kasutajaliides extends Application{
                         "tootjaAndmebaasist2"
                 );
         final ComboBox seadmeComboBox = new ComboBox();
-                seadmeComboBox.setItems(NimiAndmebaasist);
-                //seadmeComboBox.getItems().addAll(
-                         //"nimiAndmebaasist1",
-                         //"nimiAndmebaasist2"
+               // seadmeComboBox.setItems(NimiAndmebaasist);
+                seadmeComboBox.getItems().addAll(
+                         "nimiAndmebaasist1",
+                         "nimiAndmebaasist2"
         );
 
         // Tabeli pealkiri
