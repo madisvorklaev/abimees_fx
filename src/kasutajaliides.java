@@ -11,14 +11,12 @@ import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import java.util.ArrayList;
 
 public class kasutajaliides extends Application{
     public static void main(String[] args) {
         launch(args);
     }
-    static ObservableList NimiAndmebaasist;
-   static ArrayList blah = new ArrayList();
+    static ObservableList<String> NimiAndmebaasist;
 
     public static void looAndmebaas() {
         andmebaas Andmebaas = new andmebaas();
@@ -27,8 +25,6 @@ public class kasutajaliides extends Application{
         Andmebaas.readFile();
         Andmebaas.closeFile();
         NimiAndmebaasist = FXCollections.observableArrayList(Andmebaas.getSeadmed());
-        //blah = Andmebaas.getSeadmed();
-        //System.out.println(blah);
     }
 
 
@@ -52,17 +48,12 @@ public class kasutajaliides extends Application{
         // Drop-down menüüd
         final ComboBox tootjaComboBox = new ComboBox();
                 tootjaComboBox.getItems().addAll(
-                        "tootjaAndmebaasist1",
-                        "tootjaAndmebaasist2"
+                        "SeeEiTöötaPraegu1",
+                        "SeeEiTöötaPraegu2"
                 );
         final ComboBox seadmeComboBox = new ComboBox();
                 looAndmebaas();
-        seadmeComboBox.setItems(NimiAndmebaasist);
-            //ObservableList<String> blahh = FXCollections.observableArrayList(blah);
-       /* for (int i = 0; i < blah.size(); i++) {
-            ObservableList blahh = (ObservableList) blah.get(i);
-            seadmeComboBox.setItems(blahh);
-        } */
+                seadmeComboBox.setItems(NimiAndmebaasist);
 
 
         // Tabeli pealkiri
