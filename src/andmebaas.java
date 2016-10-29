@@ -1,3 +1,6 @@
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -106,23 +109,20 @@ public class andmebaas {
     }
 
     // Seadmete nimed drop-down menüüsse
-    public void getSeadmed() {
+    public ArrayList getSeadmed() {
         try {
             Class.forName("org.sqlite.JDBC");
             Connection c = null;
             c = DriverManager.getConnection("jdbc:sqlite:devices.db");
             c.setAutoCommit(false);
-            //  System.out.println("Opened database successfully");
             Statement stmt = null;
             stmt = c.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM DEVICES;");
             while (rs.next()) {
-                //int id = rs.getInt("id");
                 String name = rs.getString("name");
                 nimiAndmebaasist.add(name);
-               // System.out.println(id + " " + name);
             }
-            System.out.println(nimiAndmebaasist);
+            System.out.println("getSeadmed" + nimiAndmebaasist);
             rs.close();
             stmt.close();
             c.close();
@@ -130,5 +130,8 @@ public class andmebaas {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         }
-    }
-}
+        return null;
+
+
+
+}}

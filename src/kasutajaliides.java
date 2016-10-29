@@ -2,6 +2,8 @@
    http://docs.oracle.com/javafx/2/ui_controls/table-view.htm
  */
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -15,14 +17,18 @@ public class kasutajaliides extends Application{
     public static void main(String[] args) {
         launch(args);
     }
-    /*
+    static ObservableList NimiAndmebaasist;
+
+    public static void looAndmebaas() {
         andmebaas Andmebaas = new andmebaas();
         Andmebaas.createDatabase();
         Andmebaas.openFile();
         Andmebaas.readFile();
         Andmebaas.closeFile();
-        ArrayList NimiAndmebaasist = Andmebaas.nimiAndmebaasist
-        */
+        NimiAndmebaasist = FXCollections.observableArrayList(Andmebaas.getSeadmed());
+    }
+
+
 
     // Nupud - tekstiväljad
     final Button button = new Button("Lisa");
@@ -47,11 +53,8 @@ public class kasutajaliides extends Application{
                         "tootjaAndmebaasist2"
                 );
         final ComboBox seadmeComboBox = new ComboBox();
-               // seadmeComboBox.setItems(NimiAndmebaasist);
-                seadmeComboBox.getItems().addAll(
-                         "nimiAndmebaasist1",
-                         "nimiAndmebaasist2"
-        );
+                looAndmebaas();
+                seadmeComboBox.setItems(NimiAndmebaasist);
 
         // Tabeli pealkiri
         final Label label = new Label("Patch list");
