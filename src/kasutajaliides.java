@@ -18,6 +18,7 @@ public class kasutajaliides extends Application{
         launch(args);
     }
     static ObservableList NimiAndmebaasist;
+   static ArrayList blah = new ArrayList();
 
     public static void looAndmebaas() {
         andmebaas Andmebaas = new andmebaas();
@@ -26,6 +27,8 @@ public class kasutajaliides extends Application{
         Andmebaas.readFile();
         Andmebaas.closeFile();
         NimiAndmebaasist = FXCollections.observableArrayList(Andmebaas.getSeadmed());
+        //blah = Andmebaas.getSeadmed();
+        //System.out.println(blah);
     }
 
 
@@ -54,7 +57,13 @@ public class kasutajaliides extends Application{
                 );
         final ComboBox seadmeComboBox = new ComboBox();
                 looAndmebaas();
-                seadmeComboBox.setItems(NimiAndmebaasist);
+        seadmeComboBox.setItems(NimiAndmebaasist);
+            //ObservableList<String> blahh = FXCollections.observableArrayList(blah);
+       /* for (int i = 0; i < blah.size(); i++) {
+            ObservableList blahh = (ObservableList) blah.get(i);
+            seadmeComboBox.setItems(blahh);
+        } */
+
 
         // Tabeli pealkiri
         final Label label = new Label("Patch list");
