@@ -4,6 +4,8 @@
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -16,7 +18,10 @@ public class kasutajaliides extends Application{
     public static void main(String[] args) {
         launch(args);
     }
+
     static ObservableList<String> NimiAndmebaasist;
+    int seadmeKogus = 0;
+    String seadmeNimetus;
 
     public static void looAndmebaas() {
         andmebaas Andmebaas = new andmebaas();
@@ -27,14 +32,19 @@ public class kasutajaliides extends Application{
         NimiAndmebaasist = FXCollections.observableArrayList(Andmebaas.getSeadmed());
     }
 
-
+    public int seadmeKogus(){
+        return seadmeKogus;
+    }
+    public String seadmeNimi(){
+        return seadmeNimetus;
+    }
 
     // Nupud - tekstiväljad
-    final Button button = new Button("Lisa");
-    final TextField vool = new TextField("");
-    final TextField kanaleid = new TextField("");
-    final TextField seadmeid = new TextField("1");
-    private TableView patch = new TableView();
+        final Button button = new Button("Lisa");
+        final TextField vool = new TextField("");
+        final TextField kanaleid = new TextField("");
+        final TextField seadmeid = new TextField("1");
+        private TableView patch = new TableView();
 
 
 
@@ -89,5 +99,24 @@ public class kasutajaliides extends Application{
         primaryStage.setScene(scene);
         primaryStage.show();
 
+        // Nupu action
+        button.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent e) {
+                CharSequence textFieldValue = seadmeid.getCharacters();
+                seadmeKogus = Integer.parseInt(textFieldValue.toString());
+                System.out.println(seadmeKogus);
+
+            }});
+
+        // Drop-down menüü valik
+        seadmeComboBox.setOnAction((event) -> {
+            seadmeNimetus = (String) seadmeComboBox.getSelectionModel().getSelectedItem();
+            System.out.println("ComboBox Action (selected: " + seadmeNimetus.toString() + ")");
+        });
+
+
     }
+
 }
